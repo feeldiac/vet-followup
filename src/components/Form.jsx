@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Form = () => {
+const Form = ({ patients, setPatients }) => {
     const [name, setName] = useState('');
     const [owner, setOwner] = useState('');
     const [email, setEmail] = useState('');
@@ -18,6 +18,22 @@ const Form = () => {
         }
         setError(false);
 
+        // Patient object
+        const patientObj = {
+            name,
+            owner,
+            email,
+            dischargeDate,
+            symptoms
+        }
+        setPatients([...patients, patientObj]);
+
+        // Reset form
+        setName('')
+        setOwner('')
+        setEmail('')
+        setDischargeDate('')
+        setSymptoms('')
     }
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
