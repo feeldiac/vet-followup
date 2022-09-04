@@ -1,7 +1,9 @@
 import React from 'react'
 import Patient from './Patient'
 
-const PatientsList = () => {
+const PatientsList = ({ patients }) => {
+
+
     return (
         <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
             <h2 className='font-black text-3xl text-center'>Patient's List</h2>
@@ -11,7 +13,12 @@ const PatientsList = () => {
                     Patients and Appointments
                 </span>
             </p>
-            <Patient />
+            {patients.map(patient => (
+                <Patient
+                    key={patient.id}
+                    patient={patient}
+                />
+            ))}
         </div>
     )
 }
