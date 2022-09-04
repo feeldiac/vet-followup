@@ -1,6 +1,13 @@
-const Patient = ({ patient, setPatient }) => {
+const Patient = ({ patient, setPatient, deletePatient }) => {
 
-    const { name, owner, email, dischargeDate, symptoms } = patient;
+    const { name, owner, email, dischargeDate, symptoms, id } = patient;
+
+    const handleDelete = () => {
+        const response = confirm('Do you want to delete this patient?')
+        if (response) {
+            deletePatient(id)
+        }
+    }
 
     return (
         <div className='bg-white mx-5 shadow-md px-5 py-10 rounded-xl'>
@@ -33,7 +40,8 @@ const Patient = ({ patient, setPatient }) => {
                 </button>
                 <button
                     type="button"
-                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg">
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg"
+                    onClick={handleDelete}>
                     Delete
                 </button>
             </div>
